@@ -34,3 +34,10 @@ Icon?
 ehthumbs.db
 Thumbs.db
 
+ProtoLib/ProtoLib/bin
+ProtoLib/ProtoLib/obj
+ProtoLib/ProtoLib/Properties
+ProtoLib/ProtoLib/ProtoLib.csproj
+
+.gitattributes
+TwoVsOne.CSharp.csproj.DotSettings
