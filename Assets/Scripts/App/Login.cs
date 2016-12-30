@@ -14,6 +14,7 @@ namespace App
         // Use this for initialization
         void Start()
         {
+            FindBaseUis();
             inputMobile = GameObject.FindWithTag("mobile").GetComponent<UIInput>();
             inputCode = GameObject.FindWithTag("code").GetComponent<UIInput>();
             buttonLogin = GameObject.FindWithTag("login").GetComponent<UIButton>();
@@ -57,21 +58,28 @@ namespace App
             HttpPost(Constants.COMMON_DISPATCH_URL, GUIDHelper.generate(), Constants.DEFAULT_TOKEN, Constants.API_ID_LOGIN, req.ToByteArray());
         }
 
-        public override void Callback(byte[] data)
+        public override void Callback(bool success, byte[] data, string errorMessage)
         {
-            LoginResp response = LoginResp.Parser.ParseFrom(data);
-            switch (response.Code)
+            if (!success)
             {
-                case "0":
+                showMessage("暂时无法连接服务器，请检查网络。");
+            }
+            else
+            {
+                LoginResp response = LoginResp.Parser.ParseFrom(data);
+                switch (response.Code)
                 {
-                    DataHelper.saveProfile(response);
-                    //todo jump to game index page
-                    break;
-                }
-                default:
-                {
-                    showMessage(response.Msg);
-                    break;
+                    case "0":
+                        {
+                            DataHelper.saveProfile(response);
+                            //todo jump to game index page
+                            break;
+                        }
+                    default:
+                        {
+                            showMessage(response.Msg);
+                            break;
+                        }
                 }
             }
         }

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.IO;
-using System.IO.Compression;
+using Unity.IO.Compression;
 using ConsoleApplication.Helper;
 
 public class GZipHelper

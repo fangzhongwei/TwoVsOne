@@ -17,6 +17,7 @@ namespace App
         // Use this for initialization
         void Start ()
         {
+            FindBaseUis();
             resend = false;
             lastChannel = 0;
             inputMobile = GameObject.FindWithTag("mobile").GetComponent<UIInput>();
@@ -52,24 +53,31 @@ namespace App
             HttpPost(Constants.COMMON_DISPATCH_URL, GUIDHelper.generate(), Constants.DEFAULT_TOKEN, Constants.API_ID_SEND_CODE, req.ToByteArray());
         }
 
-        public override void Callback(byte[] data)
+        public override void Callback(bool success, byte[] data, string errorMessage)
         {
-            SendLoginVerificationCodeResp response = SendLoginVerificationCodeResp.Parser.ParseFrom(data);
-            switch (response.Code)
+            if (!success)
             {
-                case "0":
+                showMessage("暂时无法连接服务器，请检查网络。");
+            }
+            else
+            {
+                SendLoginVerificationCodeResp response = SendLoginVerificationCodeResp.Parser.ParseFrom(data);
+                switch (response.Code)
                 {
-                    showMessage("验证码已发送到您的手机，请查收。");
-                    resend = true;
-                    lastChannel = response.Channel;
-                    StartCoroutine(Timer());
-                    break;
-                }
-                default:
-                {
-                    showMessage(response.Msg);
-                    buttonSend.enabled = true;
-                    break;
+                    case "0":
+                        {
+                            showMessage("验证码已发送到您的手机，请查收。");
+                            resend = true;
+                            lastChannel = response.Channel;
+                            StartCoroutine(Timer());
+                            break;
+                        }
+                    default:
+                        {
+                            showMessage(response.Msg);
+                            buttonSend.enabled = true;
+                            break;
+                        }
                 }
             }
         }

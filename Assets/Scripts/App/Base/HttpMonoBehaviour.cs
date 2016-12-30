@@ -40,14 +40,15 @@ namespace App.Base
             if (www.error != null)
             {
                 Debug.Log("error is :"+ www.error);
+                Callback(false, www.bytes, www.error);
             }
             else
             {
                 Debug.Log("request result :" + www.text);
-                Callback(www.bytes);
+                Callback(true, www.bytes, "");
             }
         }
 
-        abstract public void Callback(byte[] data);
+        abstract public void Callback(bool success, byte[] data, string errorMessage);
     }
 }
