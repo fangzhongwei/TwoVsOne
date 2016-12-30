@@ -2,7 +2,7 @@
 {
     public class Constants
     {
-        public static string COMMON_DISPATCH_URL = "http://192.168.0.111:9019/dispath-v1.0";
+        public static string COMMON_DISPATCH_URL = "http://127.0.0.1:9019/v1.0-route";
         public static string DEFAULT_TOKEN = "0";
         public static string DEFAULT_KEY = "19B313BB9FD9F9A8A1D0E82590DD77B9";
 

@@ -1,4 +1,5 @@
-﻿using App.Base;
+﻿using System;
+using App.Base;
 using App.Helper;
 using Google.Protobuf;
 using UnityEngine;
@@ -55,18 +56,24 @@ namespace App
                 VerificationCode = code
             };
 
-            HttpPost(Constants.COMMON_DISPATCH_URL, GUIDHelper.generate(), Constants.DEFAULT_TOKEN, Constants.API_ID_LOGIN, req.ToByteArray());
+            HttpPost(Constants.COMMON_DISPATCH_URL, GUIDHelper.generate(), Constants.DEFAULT_TOKEN,
+                Constants.API_ID_LOGIN, req.ToByteArray());
         }
 
-        public override void Callback(bool success, byte[] data, string errorMessage)
+        public override void Callback(byte[] data)
         {
-            if (!success)
+            LoginResp response = null;
+            try
             {
-                showMessage("暂时无法连接服务器，请检查网络。");
+                response = LoginResp.Parser.ParseFrom(data);
             }
-            else
+            catch (Exception)
             {
-                LoginResp response = LoginResp.Parser.ParseFrom(data);
+                showMessage("解析数据异常。");
+            }
+
+            if (response != null)
+            {
                 switch (response.Code)
                 {
                     case "0":

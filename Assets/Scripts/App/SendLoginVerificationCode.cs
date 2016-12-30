@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using App.Base;
 using App.Helper;
 using Google.Protobuf;
@@ -15,25 +16,28 @@ namespace App
         private int lastChannel;
 
         // Use this for initialization
-        void Start ()
+        void Start()
         {
             FindBaseUis();
             resend = false;
             lastChannel = 0;
             inputMobile = GameObject.FindWithTag("mobile").GetComponent<UIInput>();
+            inputMobile.value = "15811111111";
             buttonSend = GameObject.FindWithTag("send").GetComponent<UIButton>();
             labelSend = GameObject.FindWithTag("sendBtnLabel").GetComponent<UILabel>();
         }
 
         // Update is called once per frame
-        void Update () {
+        void Update()
+        {
         }
 
-        public void OnbtlClick() {
+        public void OnbtlClick()
+        {
             cleanMessage();
             buttonSend.enabled = false;
 
-            string mobile = inputMobile.value;
+            string mobile = inputMobile.value;
 
             if (!RegexHelper.isMobile(mobile))
             {
@@ -50,18 +54,23 @@ namespace App
                 LastChannel = lastChannel
             };
 
-            HttpPost(Constants.COMMON_DISPATCH_URL, GUIDHelper.generate(), Constants.DEFAULT_TOKEN, Constants.API_ID_SEND_CODE, req.ToByteArray());
+            HttpPost(Constants.COMMON_DISPATCH_URL, GUIDHelper.generate(), Constants.DEFAULT_TOKEN,
+                Constants.API_ID_SEND_CODE, req.ToByteArray());
         }
 
-        public override void Callback(bool success, byte[] data, string errorMessage)
-        {
-            if (!success)
+        public override void Callback(byte[] data) { 
+            SendLoginVerificationCodeResp response = null;
+            try
             {
-                showMessage("暂时无法连接服务器，请检查网络。");
+                response = SendLoginVerificationCodeResp.Parser.ParseFrom(data);
             }
-            else
+            catch (Exception)
             {
-                SendLoginVerificationCodeResp response = SendLoginVerificationCodeResp.Parser.ParseFrom(data);
+                showMessage("解析数据异常。");
+            }
+
+            if (response != null)
+            {
                 switch (response.Code)
                 {
                     case "0":

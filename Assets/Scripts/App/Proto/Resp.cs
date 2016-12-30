@@ -20,15 +20,17 @@ public static partial class RespReflection {
   static RespReflection() {
     byte[] descriptorData = global::System.Convert.FromBase64String(
         string.Concat(
-          "Cg5zcmMvcmVzcC5wcm90byJLCh1TZW5kTG9naW5WZXJpZmljYXRpb25Db2Rl",
-          "UmVzcBIMCgRjb2RlGAEgASgJEgsKA21zZxgCIAEoCRIPCgdjaGFubmVsGAMg",
-          "ASgFIlIKCUxvZ2luUmVzcBIMCgRjb2RlGAEgASgJEgsKA21zZxgCIAEoCRIN",
-          "CgV0b2tlbhgDIAEoCRILCgNrZXkYBCABKAkSDgoGbW9iaWxlGAUgASgJQikK",
-          "J2NvbS5sYXdzb2ZuYXR1cmUuYXBpZ2F0ZXdheS5kb21haW4uaHR0cGIGcHJv",
-          "dG8z"));
+          "Cg5zcmMvcmVzcC5wcm90byIuChFTaW1wbGVBcGlSZXNwb25zZRIMCgRjb2Rl",
+          "GAEgASgJEgsKA21zZxgCIAEoCSJLCh1TZW5kTG9naW5WZXJpZmljYXRpb25D",
+          "b2RlUmVzcBIMCgRjb2RlGAEgASgJEgsKA21zZxgCIAEoCRIPCgdjaGFubmVs",
+          "GAMgASgFIlIKCUxvZ2luUmVzcBIMCgRjb2RlGAEgASgJEgsKA21zZxgCIAEo",
+          "CRINCgV0b2tlbhgDIAEoCRILCgNrZXkYBCABKAkSDgoGbW9iaWxlGAUgASgJ",
+          "QikKJ2NvbS5sYXdzb2ZuYXR1cmUuYXBpZ2F0ZXdheS5kb21haW4uaHR0cGIG",
+          "cHJvdG8z"));
     descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
         new pbr::FileDescriptor[] { },
         new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
+          new pbr::GeneratedClrTypeInfo(typeof(global::SimpleApiResponse), global::SimpleApiResponse.Parser, new[]{ "Code", "Msg" }, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::SendLoginVerificationCodeResp), global::SendLoginVerificationCodeResp.Parser, new[]{ "Code", "Msg", "Channel" }, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::LoginResp), global::LoginResp.Parser, new[]{ "Code", "Msg", "Token", "Key", "Mobile" }, null, null, null)
         }));
@@ -37,6 +39,151 @@ public static partial class RespReflection {
 
 }
 #region Messages
+public sealed partial class SimpleApiResponse : pb::IMessage<SimpleApiResponse> {
+  private static readonly pb::MessageParser<SimpleApiResponse> _parser = new pb::MessageParser<SimpleApiResponse>(() => new SimpleApiResponse());
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public static pb::MessageParser<SimpleApiResponse> Parser { get { return _parser; } }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public static pbr::MessageDescriptor Descriptor {
+    get { return global::RespReflection.Descriptor.MessageTypes[0]; }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  pbr::MessageDescriptor pb::IMessage.Descriptor {
+    get { return Descriptor; }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public SimpleApiResponse() {
+    OnConstruction();
+  }
+
+  partial void OnConstruction();
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public SimpleApiResponse(SimpleApiResponse other) : this() {
+    code_ = other.code_;
+    msg_ = other.msg_;
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public SimpleApiResponse Clone() {
+    return new SimpleApiResponse(this);
+  }
+
+  /// <summary>Field number for the "code" field.</summary>
+  public const int CodeFieldNumber = 1;
+  private string code_ = "";
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public string Code {
+    get { return code_; }
+    set {
+      code_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+    }
+  }
+
+  /// <summary>Field number for the "msg" field.</summary>
+  public const int MsgFieldNumber = 2;
+  private string msg_ = "";
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public string Msg {
+    get { return msg_; }
+    set {
+      msg_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+    }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public override bool Equals(object other) {
+    return Equals(other as SimpleApiResponse);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public bool Equals(SimpleApiResponse other) {
+    if (ReferenceEquals(other, null)) {
+      return false;
+    }
+    if (ReferenceEquals(other, this)) {
+      return true;
+    }
+    if (Code != other.Code) return false;
+    if (Msg != other.Msg) return false;
+    return true;
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public override int GetHashCode() {
+    int hash = 1;
+    if (Code.Length != 0) hash ^= Code.GetHashCode();
+    if (Msg.Length != 0) hash ^= Msg.GetHashCode();
+    return hash;
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public override string ToString() {
+    return pb::JsonFormatter.ToDiagnosticString(this);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public void WriteTo(pb::CodedOutputStream output) {
+    if (Code.Length != 0) {
+      output.WriteRawTag(10);
+      output.WriteString(Code);
+    }
+    if (Msg.Length != 0) {
+      output.WriteRawTag(18);
+      output.WriteString(Msg);
+    }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public int CalculateSize() {
+    int size = 0;
+    if (Code.Length != 0) {
+      size += 1 + pb::CodedOutputStream.ComputeStringSize(Code);
+    }
+    if (Msg.Length != 0) {
+      size += 1 + pb::CodedOutputStream.ComputeStringSize(Msg);
+    }
+    return size;
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public void MergeFrom(SimpleApiResponse other) {
+    if (other == null) {
+      return;
+    }
+    if (other.Code.Length != 0) {
+      Code = other.Code;
+    }
+    if (other.Msg.Length != 0) {
+      Msg = other.Msg;
+    }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public void MergeFrom(pb::CodedInputStream input) {
+    uint tag;
+    while ((tag = input.ReadTag()) != 0) {
+      switch(tag) {
+        default:
+          input.SkipLastField();
+          break;
+        case 10: {
+          Code = input.ReadString();
+          break;
+        }
+        case 18: {
+          Msg = input.ReadString();
+          break;
+        }
+      }
+    }
+  }
+
+}
+
 public sealed partial class SendLoginVerificationCodeResp : pb::IMessage<SendLoginVerificationCodeResp> {
   private static readonly pb::MessageParser<SendLoginVerificationCodeResp> _parser = new pb::MessageParser<SendLoginVerificationCodeResp>(() => new SendLoginVerificationCodeResp());
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -44,7 +191,7 @@ public sealed partial class SendLoginVerificationCodeResp : pb::IMessage<SendLog
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public static pbr::MessageDescriptor Descriptor {
-    get { return global::RespReflection.Descriptor.MessageTypes[0]; }
+    get { return global::RespReflection.Descriptor.MessageTypes[1]; }
   }
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -217,7 +364,7 @@ public sealed partial class LoginResp : pb::IMessage<LoginResp> {
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public static pbr::MessageDescriptor Descriptor {
-    get { return global::RespReflection.Descriptor.MessageTypes[1]; }
+    get { return global::RespReflection.Descriptor.MessageTypes[2]; }
   }
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
