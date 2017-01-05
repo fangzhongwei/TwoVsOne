@@ -108,5 +108,10 @@ namespace App
                 labelSend.text = string.Format("重新发送(${0}秒)", remainingSeconds);
             }
         }
+
+        public override void HttpErrorCallback()
+        {
+            buttonSend.enabled = true;
+        }
     }
 }

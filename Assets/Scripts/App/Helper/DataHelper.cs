@@ -7,22 +7,25 @@ namespace App.Helper
     {
         public static void saveProfile(LoginResp response)
         {
-            const string profileTableName = "t_profile";
-            SQLiteHelper sqLiteHelper = new SQLiteHelper();
+            DataService dataService = new DataService("app.db");
+
 
             try
             {
-                if (sqLiteHelper.tabbleIsExist(profileTableName))
+                dataService.CreateDB();
+                Person p = new Person()
                 {
-                    sqLiteHelper.DropTable(profileTableName);
-                }
-                sqLiteHelper.CreateTable(profileTableName, new []{"id", "identity", "nick_name", "token"}, new []{"integer primary key", "text", "text", "text"});
-                sqLiteHelper.InsertValues(profileTableName, new[] {"1", response.Mobile, response.Mobile, response.Token});
+                    Id = 1,
+                    Identity = response.Mobile,
+                    NickName = response.NickName,
+                    Token = response.Key
+                };
+                dataService.CreatePerson(p);
                 AppContext.GetInstance().setToken(response.Token);
             }
             finally
             {
-                sqLiteHelper.CloseConnection();
+                dataService.Close();
             }
         }
     }

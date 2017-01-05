@@ -44,6 +44,7 @@ namespace App.Base
             {
                 Debug.Log("error is :" + www.error);
                 showMessage("暂时无法连接服务器，请检查网络。");
+                HttpErrorCallback();
             }
             else
             {
@@ -87,5 +88,6 @@ namespace App.Base
         }
 
         abstract public void Callback(byte[] data);
+        abstract public void HttpErrorCallback();
     }
 }

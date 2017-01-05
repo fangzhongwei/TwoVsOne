@@ -90,5 +90,11 @@ namespace App
                 }
             }
         }
+
+
+        public override void HttpErrorCallback()
+        {
+            buttonLogin.enabled = true;
+        }
     }
 }
