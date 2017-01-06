@@ -20,24 +20,23 @@ public static partial class RespReflection {
   static RespReflection() {
     byte[] descriptorData = global::System.Convert.FromBase64String(
         string.Concat(
-          "Cg5zcmMvcmVzcC5wcm90byJ0ChFTaW1wbGVBcGlSZXNwb25zZRIMCgRjb2Rl",
-          "GAEgASgJEgsKA21zZxgCIAEoCRIMCgRleHQxGAMgASgJEgwKBGV4dDIYBCAB",
-          "KAkSDAoEZXh0MxgFIAEoCRIMCgRleHQ0GAYgASgJEgwKBGV4dDUYByABKAki",
-          "kQEKHVNlbmRMb2dpblZlcmlmaWNhdGlvbkNvZGVSZXNwEgwKBGNvZGUYASAB",
-          "KAkSCwoDbXNnGAIgASgJEg8KB2NoYW5uZWwYAyABKAUSDAoEZXh0MRgEIAEo",
-          "CRIMCgRleHQyGAUgASgJEgwKBGV4dDMYBiABKAkSDAoEZXh0NBgHIAEoCRIM",
-          "CgRleHQ1GAggASgJIqoBCglMb2dpblJlc3ASDAoEY29kZRgBIAEoCRILCgNt",
-          "c2cYAiABKAkSDQoFdG9rZW4YAyABKAkSCwoDa2V5GAQgASgJEg4KBm1vYmls",
-          "ZRgFIAEoCRIQCghOaWNrTmFtZRgGIAEoCRIMCgRleHQxGAcgASgJEgwKBGV4",
-          "dDIYCCABKAkSDAoEZXh0MxgJIAEoCRIMCgRleHQ0GAogASgJEgwKBGV4dDUY",
-          "CyABKAlCKQonY29tLmxhd3NvZm5hdHVyZS5hcGlnYXRld2F5LmRvbWFpbi5o",
-          "dHRwYgZwcm90bzM="));
+          "Cg5zcmMvcmVzcC5wcm90byJnChFTaW1wbGVBcGlSZXNwb25zZRIMCgRjb2Rl",
+          "GAEgASgJEgwKBGV4dDEYAiABKAkSDAoEZXh0MhgDIAEoCRIMCgRleHQzGAQg",
+          "ASgJEgwKBGV4dDQYBSABKAkSDAoEZXh0NRgGIAEoCSKEAQodU2VuZExvZ2lu",
+          "VmVyaWZpY2F0aW9uQ29kZVJlc3ASDAoEY29kZRgBIAEoCRIPCgdjaGFubmVs",
+          "GAIgASgFEgwKBGV4dDEYAyABKAkSDAoEZXh0MhgEIAEoCRIMCgRleHQzGAUg",
+          "ASgJEgwKBGV4dDQYBiABKAkSDAoEZXh0NRgHIAEoCSKgAQoJTG9naW5SZXNw",
+          "EgwKBGNvZGUYASABKAkSDQoFdG9rZW4YAiABKAkSDgoGbW9iaWxlGAMgASgJ",
+          "Eg4KBnN0YXR1cxgEIAEoBRIQCghuaWNrTmFtZRgFIAEoCRIMCgRleHQxGAYg",
+          "ASgJEgwKBGV4dDIYByABKAkSDAoEZXh0MxgIIAEoCRIMCgRleHQ0GAkgASgJ",
+          "EgwKBGV4dDUYCiABKAlCKQonY29tLmxhd3NvZm5hdHVyZS5hcGlnYXRld2F5",
+          "LmRvbWFpbi5odHRwYgZwcm90bzM="));
     descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
         new pbr::FileDescriptor[] { },
         new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-          new pbr::GeneratedClrTypeInfo(typeof(global::SimpleApiResponse), global::SimpleApiResponse.Parser, new[]{ "Code", "Msg", "Ext1", "Ext2", "Ext3", "Ext4", "Ext5" }, null, null, null),
-          new pbr::GeneratedClrTypeInfo(typeof(global::SendLoginVerificationCodeResp), global::SendLoginVerificationCodeResp.Parser, new[]{ "Code", "Msg", "Channel", "Ext1", "Ext2", "Ext3", "Ext4", "Ext5" }, null, null, null),
-          new pbr::GeneratedClrTypeInfo(typeof(global::LoginResp), global::LoginResp.Parser, new[]{ "Code", "Msg", "Token", "Key", "Mobile", "NickName", "Ext1", "Ext2", "Ext3", "Ext4", "Ext5" }, null, null, null)
+          new pbr::GeneratedClrTypeInfo(typeof(global::SimpleApiResponse), global::SimpleApiResponse.Parser, new[]{ "Code", "Ext1", "Ext2", "Ext3", "Ext4", "Ext5" }, null, null, null),
+          new pbr::GeneratedClrTypeInfo(typeof(global::SendLoginVerificationCodeResp), global::SendLoginVerificationCodeResp.Parser, new[]{ "Code", "Channel", "Ext1", "Ext2", "Ext3", "Ext4", "Ext5" }, null, null, null),
+          new pbr::GeneratedClrTypeInfo(typeof(global::LoginResp), global::LoginResp.Parser, new[]{ "Code", "Token", "Mobile", "Status", "NickName", "Ext1", "Ext2", "Ext3", "Ext4", "Ext5" }, null, null, null)
         }));
   }
   #endregion
@@ -69,7 +68,6 @@ public sealed partial class SimpleApiResponse : pb::IMessage<SimpleApiResponse> 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public SimpleApiResponse(SimpleApiResponse other) : this() {
     code_ = other.code_;
-    msg_ = other.msg_;
     ext1_ = other.ext1_;
     ext2_ = other.ext2_;
     ext3_ = other.ext3_;
@@ -93,14 +91,272 @@ public sealed partial class SimpleApiResponse : pb::IMessage<SimpleApiResponse> 
     }
   }
 
-  /// <summary>Field number for the "msg" field.</summary>
-  public const int MsgFieldNumber = 2;
-  private string msg_ = "";
+  /// <summary>Field number for the "ext1" field.</summary>
+  public const int Ext1FieldNumber = 2;
+  private string ext1_ = "";
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  public string Msg {
-    get { return msg_; }
+  public string Ext1 {
+    get { return ext1_; }
     set {
-      msg_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      ext1_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+    }
+  }
+
+  /// <summary>Field number for the "ext2" field.</summary>
+  public const int Ext2FieldNumber = 3;
+  private string ext2_ = "";
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public string Ext2 {
+    get { return ext2_; }
+    set {
+      ext2_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+    }
+  }
+
+  /// <summary>Field number for the "ext3" field.</summary>
+  public const int Ext3FieldNumber = 4;
+  private string ext3_ = "";
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public string Ext3 {
+    get { return ext3_; }
+    set {
+      ext3_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+    }
+  }
+
+  /// <summary>Field number for the "ext4" field.</summary>
+  public const int Ext4FieldNumber = 5;
+  private string ext4_ = "";
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public string Ext4 {
+    get { return ext4_; }
+    set {
+      ext4_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+    }
+  }
+
+  /// <summary>Field number for the "ext5" field.</summary>
+  public const int Ext5FieldNumber = 6;
+  private string ext5_ = "";
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public string Ext5 {
+    get { return ext5_; }
+    set {
+      ext5_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+    }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public override bool Equals(object other) {
+    return Equals(other as SimpleApiResponse);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public bool Equals(SimpleApiResponse other) {
+    if (ReferenceEquals(other, null)) {
+      return false;
+    }
+    if (ReferenceEquals(other, this)) {
+      return true;
+    }
+    if (Code != other.Code) return false;
+    if (Ext1 != other.Ext1) return false;
+    if (Ext2 != other.Ext2) return false;
+    if (Ext3 != other.Ext3) return false;
+    if (Ext4 != other.Ext4) return false;
+    if (Ext5 != other.Ext5) return false;
+    return true;
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public override int GetHashCode() {
+    int hash = 1;
+    if (Code.Length != 0) hash ^= Code.GetHashCode();
+    if (Ext1.Length != 0) hash ^= Ext1.GetHashCode();
+    if (Ext2.Length != 0) hash ^= Ext2.GetHashCode();
+    if (Ext3.Length != 0) hash ^= Ext3.GetHashCode();
+    if (Ext4.Length != 0) hash ^= Ext4.GetHashCode();
+    if (Ext5.Length != 0) hash ^= Ext5.GetHashCode();
+    return hash;
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public override string ToString() {
+    return pb::JsonFormatter.ToDiagnosticString(this);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public void WriteTo(pb::CodedOutputStream output) {
+    if (Code.Length != 0) {
+      output.WriteRawTag(10);
+      output.WriteString(Code);
+    }
+    if (Ext1.Length != 0) {
+      output.WriteRawTag(18);
+      output.WriteString(Ext1);
+    }
+    if (Ext2.Length != 0) {
+      output.WriteRawTag(26);
+      output.WriteString(Ext2);
+    }
+    if (Ext3.Length != 0) {
+      output.WriteRawTag(34);
+      output.WriteString(Ext3);
+    }
+    if (Ext4.Length != 0) {
+      output.WriteRawTag(42);
+      output.WriteString(Ext4);
+    }
+    if (Ext5.Length != 0) {
+      output.WriteRawTag(50);
+      output.WriteString(Ext5);
+    }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public int CalculateSize() {
+    int size = 0;
+    if (Code.Length != 0) {
+      size += 1 + pb::CodedOutputStream.ComputeStringSize(Code);
+    }
+    if (Ext1.Length != 0) {
+      size += 1 + pb::CodedOutputStream.ComputeStringSize(Ext1);
+    }
+    if (Ext2.Length != 0) {
+      size += 1 + pb::CodedOutputStream.ComputeStringSize(Ext2);
+    }
+    if (Ext3.Length != 0) {
+      size += 1 + pb::CodedOutputStream.ComputeStringSize(Ext3);
+    }
+    if (Ext4.Length != 0) {
+      size += 1 + pb::CodedOutputStream.ComputeStringSize(Ext4);
+    }
+    if (Ext5.Length != 0) {
+      size += 1 + pb::CodedOutputStream.ComputeStringSize(Ext5);
+    }
+    return size;
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public void MergeFrom(SimpleApiResponse other) {
+    if (other == null) {
+      return;
+    }
+    if (other.Code.Length != 0) {
+      Code = other.Code;
+    }
+    if (other.Ext1.Length != 0) {
+      Ext1 = other.Ext1;
+    }
+    if (other.Ext2.Length != 0) {
+      Ext2 = other.Ext2;
+    }
+    if (other.Ext3.Length != 0) {
+      Ext3 = other.Ext3;
+    }
+    if (other.Ext4.Length != 0) {
+      Ext4 = other.Ext4;
+    }
+    if (other.Ext5.Length != 0) {
+      Ext5 = other.Ext5;
+    }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public void MergeFrom(pb::CodedInputStream input) {
+    uint tag;
+    while ((tag = input.ReadTag()) != 0) {
+      switch(tag) {
+        default:
+          input.SkipLastField();
+          break;
+        case 10: {
+          Code = input.ReadString();
+          break;
+        }
+        case 18: {
+          Ext1 = input.ReadString();
+          break;
+        }
+        case 26: {
+          Ext2 = input.ReadString();
+          break;
+        }
+        case 34: {
+          Ext3 = input.ReadString();
+          break;
+        }
+        case 42: {
+          Ext4 = input.ReadString();
+          break;
+        }
+        case 50: {
+          Ext5 = input.ReadString();
+          break;
+        }
+      }
+    }
+  }
+
+}
+
+public sealed partial class SendLoginVerificationCodeResp : pb::IMessage<SendLoginVerificationCodeResp> {
+  private static readonly pb::MessageParser<SendLoginVerificationCodeResp> _parser = new pb::MessageParser<SendLoginVerificationCodeResp>(() => new SendLoginVerificationCodeResp());
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public static pb::MessageParser<SendLoginVerificationCodeResp> Parser { get { return _parser; } }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public static pbr::MessageDescriptor Descriptor {
+    get { return global::RespReflection.Descriptor.MessageTypes[1]; }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  pbr::MessageDescriptor pb::IMessage.Descriptor {
+    get { return Descriptor; }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public SendLoginVerificationCodeResp() {
+    OnConstruction();
+  }
+
+  partial void OnConstruction();
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public SendLoginVerificationCodeResp(SendLoginVerificationCodeResp other) : this() {
+    code_ = other.code_;
+    channel_ = other.channel_;
+    ext1_ = other.ext1_;
+    ext2_ = other.ext2_;
+    ext3_ = other.ext3_;
+    ext4_ = other.ext4_;
+    ext5_ = other.ext5_;
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public SendLoginVerificationCodeResp Clone() {
+    return new SendLoginVerificationCodeResp(this);
+  }
+
+  /// <summary>Field number for the "code" field.</summary>
+  public const int CodeFieldNumber = 1;
+  private string code_ = "";
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public string Code {
+    get { return code_; }
+    set {
+      code_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+    }
+  }
+
+  /// <summary>Field number for the "channel" field.</summary>
+  public const int ChannelFieldNumber = 2;
+  private int channel_;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public int Channel {
+    get { return channel_; }
+    set {
+      channel_ = value;
     }
   }
 
@@ -161,11 +417,11 @@ public sealed partial class SimpleApiResponse : pb::IMessage<SimpleApiResponse> 
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public override bool Equals(object other) {
-    return Equals(other as SimpleApiResponse);
+    return Equals(other as SendLoginVerificationCodeResp);
   }
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  public bool Equals(SimpleApiResponse other) {
+  public bool Equals(SendLoginVerificationCodeResp other) {
     if (ReferenceEquals(other, null)) {
       return false;
     }
@@ -173,7 +429,7 @@ public sealed partial class SimpleApiResponse : pb::IMessage<SimpleApiResponse> 
       return true;
     }
     if (Code != other.Code) return false;
-    if (Msg != other.Msg) return false;
+    if (Channel != other.Channel) return false;
     if (Ext1 != other.Ext1) return false;
     if (Ext2 != other.Ext2) return false;
     if (Ext3 != other.Ext3) return false;
@@ -186,7 +442,7 @@ public sealed partial class SimpleApiResponse : pb::IMessage<SimpleApiResponse> 
   public override int GetHashCode() {
     int hash = 1;
     if (Code.Length != 0) hash ^= Code.GetHashCode();
-    if (Msg.Length != 0) hash ^= Msg.GetHashCode();
+    if (Channel != 0) hash ^= Channel.GetHashCode();
     if (Ext1.Length != 0) hash ^= Ext1.GetHashCode();
     if (Ext2.Length != 0) hash ^= Ext2.GetHashCode();
     if (Ext3.Length != 0) hash ^= Ext3.GetHashCode();
@@ -206,9 +462,9 @@ public sealed partial class SimpleApiResponse : pb::IMessage<SimpleApiResponse> 
       output.WriteRawTag(10);
       output.WriteString(Code);
     }
-    if (Msg.Length != 0) {
-      output.WriteRawTag(18);
-      output.WriteString(Msg);
+    if (Channel != 0) {
+      output.WriteRawTag(16);
+      output.WriteInt32(Channel);
     }
     if (Ext1.Length != 0) {
       output.WriteRawTag(26);
@@ -238,312 +494,6 @@ public sealed partial class SimpleApiResponse : pb::IMessage<SimpleApiResponse> 
     if (Code.Length != 0) {
       size += 1 + pb::CodedOutputStream.ComputeStringSize(Code);
     }
-    if (Msg.Length != 0) {
-      size += 1 + pb::CodedOutputStream.ComputeStringSize(Msg);
-    }
-    if (Ext1.Length != 0) {
-      size += 1 + pb::CodedOutputStream.ComputeStringSize(Ext1);
-    }
-    if (Ext2.Length != 0) {
-      size += 1 + pb::CodedOutputStream.ComputeStringSize(Ext2);
-    }
-    if (Ext3.Length != 0) {
-      size += 1 + pb::CodedOutputStream.ComputeStringSize(Ext3);
-    }
-    if (Ext4.Length != 0) {
-      size += 1 + pb::CodedOutputStream.ComputeStringSize(Ext4);
-    }
-    if (Ext5.Length != 0) {
-      size += 1 + pb::CodedOutputStream.ComputeStringSize(Ext5);
-    }
-    return size;
-  }
-
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  public void MergeFrom(SimpleApiResponse other) {
-    if (other == null) {
-      return;
-    }
-    if (other.Code.Length != 0) {
-      Code = other.Code;
-    }
-    if (other.Msg.Length != 0) {
-      Msg = other.Msg;
-    }
-    if (other.Ext1.Length != 0) {
-      Ext1 = other.Ext1;
-    }
-    if (other.Ext2.Length != 0) {
-      Ext2 = other.Ext2;
-    }
-    if (other.Ext3.Length != 0) {
-      Ext3 = other.Ext3;
-    }
-    if (other.Ext4.Length != 0) {
-      Ext4 = other.Ext4;
-    }
-    if (other.Ext5.Length != 0) {
-      Ext5 = other.Ext5;
-    }
-  }
-
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  public void MergeFrom(pb::CodedInputStream input) {
-    uint tag;
-    while ((tag = input.ReadTag()) != 0) {
-      switch(tag) {
-        default:
-          input.SkipLastField();
-          break;
-        case 10: {
-          Code = input.ReadString();
-          break;
-        }
-        case 18: {
-          Msg = input.ReadString();
-          break;
-        }
-        case 26: {
-          Ext1 = input.ReadString();
-          break;
-        }
-        case 34: {
-          Ext2 = input.ReadString();
-          break;
-        }
-        case 42: {
-          Ext3 = input.ReadString();
-          break;
-        }
-        case 50: {
-          Ext4 = input.ReadString();
-          break;
-        }
-        case 58: {
-          Ext5 = input.ReadString();
-          break;
-        }
-      }
-    }
-  }
-
-}
-
-public sealed partial class SendLoginVerificationCodeResp : pb::IMessage<SendLoginVerificationCodeResp> {
-  private static readonly pb::MessageParser<SendLoginVerificationCodeResp> _parser = new pb::MessageParser<SendLoginVerificationCodeResp>(() => new SendLoginVerificationCodeResp());
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  public static pb::MessageParser<SendLoginVerificationCodeResp> Parser { get { return _parser; } }
-
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  public static pbr::MessageDescriptor Descriptor {
-    get { return global::RespReflection.Descriptor.MessageTypes[1]; }
-  }
-
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  pbr::MessageDescriptor pb::IMessage.Descriptor {
-    get { return Descriptor; }
-  }
-
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  public SendLoginVerificationCodeResp() {
-    OnConstruction();
-  }
-
-  partial void OnConstruction();
-
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  public SendLoginVerificationCodeResp(SendLoginVerificationCodeResp other) : this() {
-    code_ = other.code_;
-    msg_ = other.msg_;
-    channel_ = other.channel_;
-    ext1_ = other.ext1_;
-    ext2_ = other.ext2_;
-    ext3_ = other.ext3_;
-    ext4_ = other.ext4_;
-    ext5_ = other.ext5_;
-  }
-
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  public SendLoginVerificationCodeResp Clone() {
-    return new SendLoginVerificationCodeResp(this);
-  }
-
-  /// <summary>Field number for the "code" field.</summary>
-  public const int CodeFieldNumber = 1;
-  private string code_ = "";
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  public string Code {
-    get { return code_; }
-    set {
-      code_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-    }
-  }
-
-  /// <summary>Field number for the "msg" field.</summary>
-  public const int MsgFieldNumber = 2;
-  private string msg_ = "";
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  public string Msg {
-    get { return msg_; }
-    set {
-      msg_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-    }
-  }
-
-  /// <summary>Field number for the "channel" field.</summary>
-  public const int ChannelFieldNumber = 3;
-  private int channel_;
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  public int Channel {
-    get { return channel_; }
-    set {
-      channel_ = value;
-    }
-  }
-
-  /// <summary>Field number for the "ext1" field.</summary>
-  public const int Ext1FieldNumber = 4;
-  private string ext1_ = "";
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  public string Ext1 {
-    get { return ext1_; }
-    set {
-      ext1_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-    }
-  }
-
-  /// <summary>Field number for the "ext2" field.</summary>
-  public const int Ext2FieldNumber = 5;
-  private string ext2_ = "";
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  public string Ext2 {
-    get { return ext2_; }
-    set {
-      ext2_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-    }
-  }
-
-  /// <summary>Field number for the "ext3" field.</summary>
-  public const int Ext3FieldNumber = 6;
-  private string ext3_ = "";
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  public string Ext3 {
-    get { return ext3_; }
-    set {
-      ext3_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-    }
-  }
-
-  /// <summary>Field number for the "ext4" field.</summary>
-  public const int Ext4FieldNumber = 7;
-  private string ext4_ = "";
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  public string Ext4 {
-    get { return ext4_; }
-    set {
-      ext4_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-    }
-  }
-
-  /// <summary>Field number for the "ext5" field.</summary>
-  public const int Ext5FieldNumber = 8;
-  private string ext5_ = "";
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  public string Ext5 {
-    get { return ext5_; }
-    set {
-      ext5_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-    }
-  }
-
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  public override bool Equals(object other) {
-    return Equals(other as SendLoginVerificationCodeResp);
-  }
-
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  public bool Equals(SendLoginVerificationCodeResp other) {
-    if (ReferenceEquals(other, null)) {
-      return false;
-    }
-    if (ReferenceEquals(other, this)) {
-      return true;
-    }
-    if (Code != other.Code) return false;
-    if (Msg != other.Msg) return false;
-    if (Channel != other.Channel) return false;
-    if (Ext1 != other.Ext1) return false;
-    if (Ext2 != other.Ext2) return false;
-    if (Ext3 != other.Ext3) return false;
-    if (Ext4 != other.Ext4) return false;
-    if (Ext5 != other.Ext5) return false;
-    return true;
-  }
-
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  public override int GetHashCode() {
-    int hash = 1;
-    if (Code.Length != 0) hash ^= Code.GetHashCode();
-    if (Msg.Length != 0) hash ^= Msg.GetHashCode();
-    if (Channel != 0) hash ^= Channel.GetHashCode();
-    if (Ext1.Length != 0) hash ^= Ext1.GetHashCode();
-    if (Ext2.Length != 0) hash ^= Ext2.GetHashCode();
-    if (Ext3.Length != 0) hash ^= Ext3.GetHashCode();
-    if (Ext4.Length != 0) hash ^= Ext4.GetHashCode();
-    if (Ext5.Length != 0) hash ^= Ext5.GetHashCode();
-    return hash;
-  }
-
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  public override string ToString() {
-    return pb::JsonFormatter.ToDiagnosticString(this);
-  }
-
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  public void WriteTo(pb::CodedOutputStream output) {
-    if (Code.Length != 0) {
-      output.WriteRawTag(10);
-      output.WriteString(Code);
-    }
-    if (Msg.Length != 0) {
-      output.WriteRawTag(18);
-      output.WriteString(Msg);
-    }
-    if (Channel != 0) {
-      output.WriteRawTag(24);
-      output.WriteInt32(Channel);
-    }
-    if (Ext1.Length != 0) {
-      output.WriteRawTag(34);
-      output.WriteString(Ext1);
-    }
-    if (Ext2.Length != 0) {
-      output.WriteRawTag(42);
-      output.WriteString(Ext2);
-    }
-    if (Ext3.Length != 0) {
-      output.WriteRawTag(50);
-      output.WriteString(Ext3);
-    }
-    if (Ext4.Length != 0) {
-      output.WriteRawTag(58);
-      output.WriteString(Ext4);
-    }
-    if (Ext5.Length != 0) {
-      output.WriteRawTag(66);
-      output.WriteString(Ext5);
-    }
-  }
-
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  public int CalculateSize() {
-    int size = 0;
-    if (Code.Length != 0) {
-      size += 1 + pb::CodedOutputStream.ComputeStringSize(Code);
-    }
-    if (Msg.Length != 0) {
-      size += 1 + pb::CodedOutputStream.ComputeStringSize(Msg);
-    }
     if (Channel != 0) {
       size += 1 + pb::CodedOutputStream.ComputeInt32Size(Channel);
     }
@@ -572,9 +522,6 @@ public sealed partial class SendLoginVerificationCodeResp : pb::IMessage<SendLog
     }
     if (other.Code.Length != 0) {
       Code = other.Code;
-    }
-    if (other.Msg.Length != 0) {
-      Msg = other.Msg;
     }
     if (other.Channel != 0) {
       Channel = other.Channel;
@@ -608,31 +555,27 @@ public sealed partial class SendLoginVerificationCodeResp : pb::IMessage<SendLog
           Code = input.ReadString();
           break;
         }
-        case 18: {
-          Msg = input.ReadString();
-          break;
-        }
-        case 24: {
+        case 16: {
           Channel = input.ReadInt32();
           break;
         }
-        case 34: {
+        case 26: {
           Ext1 = input.ReadString();
           break;
         }
-        case 42: {
+        case 34: {
           Ext2 = input.ReadString();
           break;
         }
-        case 50: {
+        case 42: {
           Ext3 = input.ReadString();
           break;
         }
-        case 58: {
+        case 50: {
           Ext4 = input.ReadString();
           break;
         }
-        case 66: {
+        case 58: {
           Ext5 = input.ReadString();
           break;
         }
@@ -667,10 +610,9 @@ public sealed partial class LoginResp : pb::IMessage<LoginResp> {
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public LoginResp(LoginResp other) : this() {
     code_ = other.code_;
-    msg_ = other.msg_;
     token_ = other.token_;
-    key_ = other.key_;
     mobile_ = other.mobile_;
+    status_ = other.status_;
     nickName_ = other.nickName_;
     ext1_ = other.ext1_;
     ext2_ = other.ext2_;
@@ -695,19 +637,8 @@ public sealed partial class LoginResp : pb::IMessage<LoginResp> {
     }
   }
 
-  /// <summary>Field number for the "msg" field.</summary>
-  public const int MsgFieldNumber = 2;
-  private string msg_ = "";
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  public string Msg {
-    get { return msg_; }
-    set {
-      msg_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-    }
-  }
-
   /// <summary>Field number for the "token" field.</summary>
-  public const int TokenFieldNumber = 3;
+  public const int TokenFieldNumber = 2;
   private string token_ = "";
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public string Token {
@@ -717,19 +648,8 @@ public sealed partial class LoginResp : pb::IMessage<LoginResp> {
     }
   }
 
-  /// <summary>Field number for the "key" field.</summary>
-  public const int KeyFieldNumber = 4;
-  private string key_ = "";
-  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  public string Key {
-    get { return key_; }
-    set {
-      key_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-    }
-  }
-
   /// <summary>Field number for the "mobile" field.</summary>
-  public const int MobileFieldNumber = 5;
+  public const int MobileFieldNumber = 3;
   private string mobile_ = "";
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public string Mobile {
@@ -739,8 +659,19 @@ public sealed partial class LoginResp : pb::IMessage<LoginResp> {
     }
   }
 
-  /// <summary>Field number for the "NickName" field.</summary>
-  public const int NickNameFieldNumber = 6;
+  /// <summary>Field number for the "status" field.</summary>
+  public const int StatusFieldNumber = 4;
+  private int status_;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public int Status {
+    get { return status_; }
+    set {
+      status_ = value;
+    }
+  }
+
+  /// <summary>Field number for the "nickName" field.</summary>
+  public const int NickNameFieldNumber = 5;
   private string nickName_ = "";
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public string NickName {
@@ -751,7 +682,7 @@ public sealed partial class LoginResp : pb::IMessage<LoginResp> {
   }
 
   /// <summary>Field number for the "ext1" field.</summary>
-  public const int Ext1FieldNumber = 7;
+  public const int Ext1FieldNumber = 6;
   private string ext1_ = "";
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public string Ext1 {
@@ -762,7 +693,7 @@ public sealed partial class LoginResp : pb::IMessage<LoginResp> {
   }
 
   /// <summary>Field number for the "ext2" field.</summary>
-  public const int Ext2FieldNumber = 8;
+  public const int Ext2FieldNumber = 7;
   private string ext2_ = "";
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public string Ext2 {
@@ -773,7 +704,7 @@ public sealed partial class LoginResp : pb::IMessage<LoginResp> {
   }
 
   /// <summary>Field number for the "ext3" field.</summary>
-  public const int Ext3FieldNumber = 9;
+  public const int Ext3FieldNumber = 8;
   private string ext3_ = "";
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public string Ext3 {
@@ -784,7 +715,7 @@ public sealed partial class LoginResp : pb::IMessage<LoginResp> {
   }
 
   /// <summary>Field number for the "ext4" field.</summary>
-  public const int Ext4FieldNumber = 10;
+  public const int Ext4FieldNumber = 9;
   private string ext4_ = "";
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public string Ext4 {
@@ -795,7 +726,7 @@ public sealed partial class LoginResp : pb::IMessage<LoginResp> {
   }
 
   /// <summary>Field number for the "ext5" field.</summary>
-  public const int Ext5FieldNumber = 11;
+  public const int Ext5FieldNumber = 10;
   private string ext5_ = "";
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public string Ext5 {
@@ -819,10 +750,9 @@ public sealed partial class LoginResp : pb::IMessage<LoginResp> {
       return true;
     }
     if (Code != other.Code) return false;
-    if (Msg != other.Msg) return false;
     if (Token != other.Token) return false;
-    if (Key != other.Key) return false;
     if (Mobile != other.Mobile) return false;
+    if (Status != other.Status) return false;
     if (NickName != other.NickName) return false;
     if (Ext1 != other.Ext1) return false;
     if (Ext2 != other.Ext2) return false;
@@ -836,10 +766,9 @@ public sealed partial class LoginResp : pb::IMessage<LoginResp> {
   public override int GetHashCode() {
     int hash = 1;
     if (Code.Length != 0) hash ^= Code.GetHashCode();
-    if (Msg.Length != 0) hash ^= Msg.GetHashCode();
     if (Token.Length != 0) hash ^= Token.GetHashCode();
-    if (Key.Length != 0) hash ^= Key.GetHashCode();
     if (Mobile.Length != 0) hash ^= Mobile.GetHashCode();
+    if (Status != 0) hash ^= Status.GetHashCode();
     if (NickName.Length != 0) hash ^= NickName.GetHashCode();
     if (Ext1.Length != 0) hash ^= Ext1.GetHashCode();
     if (Ext2.Length != 0) hash ^= Ext2.GetHashCode();
@@ -860,44 +789,40 @@ public sealed partial class LoginResp : pb::IMessage<LoginResp> {
       output.WriteRawTag(10);
       output.WriteString(Code);
     }
-    if (Msg.Length != 0) {
-      output.WriteRawTag(18);
-      output.WriteString(Msg);
-    }
     if (Token.Length != 0) {
-      output.WriteRawTag(26);
+      output.WriteRawTag(18);
       output.WriteString(Token);
     }
-    if (Key.Length != 0) {
-      output.WriteRawTag(34);
-      output.WriteString(Key);
-    }
     if (Mobile.Length != 0) {
-      output.WriteRawTag(42);
+      output.WriteRawTag(26);
       output.WriteString(Mobile);
     }
+    if (Status != 0) {
+      output.WriteRawTag(32);
+      output.WriteInt32(Status);
+    }
     if (NickName.Length != 0) {
-      output.WriteRawTag(50);
+      output.WriteRawTag(42);
       output.WriteString(NickName);
     }
     if (Ext1.Length != 0) {
-      output.WriteRawTag(58);
+      output.WriteRawTag(50);
       output.WriteString(Ext1);
     }
     if (Ext2.Length != 0) {
-      output.WriteRawTag(66);
+      output.WriteRawTag(58);
       output.WriteString(Ext2);
     }
     if (Ext3.Length != 0) {
-      output.WriteRawTag(74);
+      output.WriteRawTag(66);
       output.WriteString(Ext3);
     }
     if (Ext4.Length != 0) {
-      output.WriteRawTag(82);
+      output.WriteRawTag(74);
       output.WriteString(Ext4);
     }
     if (Ext5.Length != 0) {
-      output.WriteRawTag(90);
+      output.WriteRawTag(82);
       output.WriteString(Ext5);
     }
   }
@@ -908,17 +833,14 @@ public sealed partial class LoginResp : pb::IMessage<LoginResp> {
     if (Code.Length != 0) {
       size += 1 + pb::CodedOutputStream.ComputeStringSize(Code);
     }
-    if (Msg.Length != 0) {
-      size += 1 + pb::CodedOutputStream.ComputeStringSize(Msg);
-    }
     if (Token.Length != 0) {
       size += 1 + pb::CodedOutputStream.ComputeStringSize(Token);
     }
-    if (Key.Length != 0) {
-      size += 1 + pb::CodedOutputStream.ComputeStringSize(Key);
-    }
     if (Mobile.Length != 0) {
       size += 1 + pb::CodedOutputStream.ComputeStringSize(Mobile);
+    }
+    if (Status != 0) {
+      size += 1 + pb::CodedOutputStream.ComputeInt32Size(Status);
     }
     if (NickName.Length != 0) {
       size += 1 + pb::CodedOutputStream.ComputeStringSize(NickName);
@@ -949,17 +871,14 @@ public sealed partial class LoginResp : pb::IMessage<LoginResp> {
     if (other.Code.Length != 0) {
       Code = other.Code;
     }
-    if (other.Msg.Length != 0) {
-      Msg = other.Msg;
-    }
     if (other.Token.Length != 0) {
       Token = other.Token;
     }
-    if (other.Key.Length != 0) {
-      Key = other.Key;
-    }
     if (other.Mobile.Length != 0) {
       Mobile = other.Mobile;
+    }
+    if (other.Status != 0) {
+      Status = other.Status;
     }
     if (other.NickName.Length != 0) {
       NickName = other.NickName;
@@ -994,42 +913,38 @@ public sealed partial class LoginResp : pb::IMessage<LoginResp> {
           break;
         }
         case 18: {
-          Msg = input.ReadString();
-          break;
-        }
-        case 26: {
           Token = input.ReadString();
           break;
         }
-        case 34: {
-          Key = input.ReadString();
-          break;
-        }
-        case 42: {
+        case 26: {
           Mobile = input.ReadString();
           break;
         }
-        case 50: {
+        case 32: {
+          Status = input.ReadInt32();
+          break;
+        }
+        case 42: {
           NickName = input.ReadString();
           break;
         }
-        case 58: {
+        case 50: {
           Ext1 = input.ReadString();
           break;
         }
-        case 66: {
+        case 58: {
           Ext2 = input.ReadString();
           break;
         }
-        case 74: {
+        case 66: {
           Ext3 = input.ReadString();
           break;
         }
-        case 82: {
+        case 74: {
           Ext4 = input.ReadString();
           break;
         }
-        case 90: {
+        case 82: {
           Ext5 = input.ReadString();
           break;
         }

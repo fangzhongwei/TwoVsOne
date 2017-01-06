@@ -28,18 +28,18 @@ public static partial class ReqReflection {
           "EhAKCGNsaWVudElkGAEgASgFEhIKCmRldmljZVR5cGUYAiABKAUSEwoLZmlu",
           "Z2VyUHJpbnQYAyABKAkSDgoGbW9iaWxlGAQgASgJEhgKEHZlcmlmaWNhdGlv",
           "bkNvZGUYBSABKAkSDAoEZXh0MRgGIAEoCRIMCgRleHQyGAcgASgJEgwKBGV4",
-          "dDMYCCABKAkSDAoEZXh0NBgJIAEoCRIMCgRleHQ1GAogASgJIp4BCgxBdXRv",
-          "TG9naW5SZXESEAoIY2xpZW50SWQYASABKAUSEgoKZGV2aWNlVHlwZRgCIAEo",
-          "BRITCgtmaW5nZXJQcmludBgDIAEoCRINCgV0b2tlbhgEIAEoCRIMCgRleHQx",
-          "GAUgASgJEgwKBGV4dDIYBiABKAkSDAoEZXh0MxgHIAEoCRIMCgRleHQ0GAgg",
-          "ASgJEgwKBGV4dDUYCSABKAlCKQonY29tLmxhd3NvZm5hdHVyZS5hcGlnYXRl",
-          "d2F5LmRvbWFpbi5odHRwYgZwcm90bzM="));
+          "dDMYCCABKAkSDAoEZXh0NBgJIAEoCRIMCgRleHQ1GAogASgJIqEBCg9Mb2dp",
+          "bkJ5VG9rZW5SZXESEAoIY2xpZW50SWQYASABKAUSEgoKZGV2aWNlVHlwZRgC",
+          "IAEoBRITCgtmaW5nZXJQcmludBgDIAEoCRINCgV0b2tlbhgEIAEoCRIMCgRl",
+          "eHQxGAUgASgJEgwKBGV4dDIYBiABKAkSDAoEZXh0MxgHIAEoCRIMCgRleHQ0",
+          "GAggASgJEgwKBGV4dDUYCSABKAlCKQonY29tLmxhd3NvZm5hdHVyZS5hcGln",
+          "YXRld2F5LmRvbWFpbi5odHRwYgZwcm90bzM="));
     descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
         new pbr::FileDescriptor[] { },
         new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
           new pbr::GeneratedClrTypeInfo(typeof(global::SendLoginVerificationCodeReq), global::SendLoginVerificationCodeReq.Parser, new[]{ "DeviceType", "FingerPrint", "Mobile", "Resend", "LastChannel", "Ext1", "Ext2", "Ext3", "Ext4", "Ext5" }, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::LoginReq), global::LoginReq.Parser, new[]{ "ClientId", "DeviceType", "FingerPrint", "Mobile", "VerificationCode", "Ext1", "Ext2", "Ext3", "Ext4", "Ext5" }, null, null, null),
-          new pbr::GeneratedClrTypeInfo(typeof(global::AutoLoginReq), global::AutoLoginReq.Parser, new[]{ "ClientId", "DeviceType", "FingerPrint", "Token", "Ext1", "Ext2", "Ext3", "Ext4", "Ext5" }, null, null, null)
+          new pbr::GeneratedClrTypeInfo(typeof(global::LoginByTokenReq), global::LoginByTokenReq.Parser, new[]{ "ClientId", "DeviceType", "FingerPrint", "Token", "Ext1", "Ext2", "Ext3", "Ext4", "Ext5" }, null, null, null)
         }));
   }
   #endregion
@@ -784,10 +784,10 @@ public sealed partial class LoginReq : pb::IMessage<LoginReq> {
 
 }
 
-public sealed partial class AutoLoginReq : pb::IMessage<AutoLoginReq> {
-  private static readonly pb::MessageParser<AutoLoginReq> _parser = new pb::MessageParser<AutoLoginReq>(() => new AutoLoginReq());
+public sealed partial class LoginByTokenReq : pb::IMessage<LoginByTokenReq> {
+  private static readonly pb::MessageParser<LoginByTokenReq> _parser = new pb::MessageParser<LoginByTokenReq>(() => new LoginByTokenReq());
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  public static pb::MessageParser<AutoLoginReq> Parser { get { return _parser; } }
+  public static pb::MessageParser<LoginByTokenReq> Parser { get { return _parser; } }
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public static pbr::MessageDescriptor Descriptor {
@@ -800,14 +800,14 @@ public sealed partial class AutoLoginReq : pb::IMessage<AutoLoginReq> {
   }
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  public AutoLoginReq() {
+  public LoginByTokenReq() {
     OnConstruction();
   }
 
   partial void OnConstruction();
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  public AutoLoginReq(AutoLoginReq other) : this() {
+  public LoginByTokenReq(LoginByTokenReq other) : this() {
     clientId_ = other.clientId_;
     deviceType_ = other.deviceType_;
     fingerPrint_ = other.fingerPrint_;
@@ -820,8 +820,8 @@ public sealed partial class AutoLoginReq : pb::IMessage<AutoLoginReq> {
   }
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  public AutoLoginReq Clone() {
-    return new AutoLoginReq(this);
+  public LoginByTokenReq Clone() {
+    return new LoginByTokenReq(this);
   }
 
   /// <summary>Field number for the "clientId" field.</summary>
@@ -925,11 +925,11 @@ public sealed partial class AutoLoginReq : pb::IMessage<AutoLoginReq> {
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public override bool Equals(object other) {
-    return Equals(other as AutoLoginReq);
+    return Equals(other as LoginByTokenReq);
   }
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  public bool Equals(AutoLoginReq other) {
+  public bool Equals(LoginByTokenReq other) {
     if (ReferenceEquals(other, null)) {
       return false;
     }
@@ -1042,7 +1042,7 @@ public sealed partial class AutoLoginReq : pb::IMessage<AutoLoginReq> {
   }
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  public void MergeFrom(AutoLoginReq other) {
+  public void MergeFrom(LoginByTokenReq other) {
     if (other == null) {
       return;
     }
