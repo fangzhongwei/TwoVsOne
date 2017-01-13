@@ -15,7 +15,7 @@ namespace App.Helper
         {
             if (dbManager == null)
             {
-                dbManager = dbManager = GameObject.FindGameObjectWithTag("appdbmanager").GetComponent<SimpleSQLManager>();
+                dbManager = GameObject.FindGameObjectWithTag("appdbmanager").GetComponent<SimpleSQLManager>();
             }
         }
 
