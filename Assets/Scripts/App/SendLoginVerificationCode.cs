@@ -83,7 +83,7 @@ namespace App
                         }
                     default:
                         {
-                            showMessage(response.Msg);
+                            showMessage(response.Code);
                             buttonSend.enabled = true;
                             break;
                         }

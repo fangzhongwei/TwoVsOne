@@ -75,7 +75,7 @@ namespace App.Base
                         }
                         if (response != null)
                         {
-                            showMessage(response.Msg);
+                            showMessage(response.Code);
                         }
                     }
                     else

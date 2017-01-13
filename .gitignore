@@ -48,3 +48,6 @@ CompressionLib/CompressionLib/CompressionLib.csproj
 
 .gitattributes
 TwoVsOne.CSharp.csproj.DotSettings
+
+.idea
+*.apk

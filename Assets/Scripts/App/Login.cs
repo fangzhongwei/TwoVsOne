@@ -3,6 +3,7 @@ using App.Base;
 using App.Helper;
 using Google.Protobuf;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace App
 {
@@ -11,6 +12,7 @@ namespace App
         private UIInput inputMobile;
         private UIInput inputCode;
         private UIButton buttonLogin;
+        private UISprite spriteBackground;
 
         // Use this for initialization
         void Start()
@@ -19,6 +21,23 @@ namespace App
             inputMobile = GameObject.FindWithTag("mobile").GetComponent<UIInput>();
             inputCode = GameObject.FindWithTag("code").GetComponent<UIInput>();
             buttonLogin = GameObject.FindWithTag("login").GetComponent<UIButton>();
+            spriteBackground = GameObject.FindWithTag("background").GetComponent<UISprite>();
+            AdjustScreen();
+        }
+
+        private void AdjustScreen()
+        {
+            UIRoot root = GameObject.FindObjectOfType<UIRoot>();
+            if (root != null)
+            {
+                float s = (float)root.activeHeight / Screen.height;
+                int height = Mathf.CeilToInt(Screen.height * s);
+                int width = Mathf.CeilToInt(Screen.width * s);
+                Debug.Log("height = " + height);
+                Debug.Log("width = " + width);
+                spriteBackground.width = width;
+                spriteBackground.height = height;
+            }
         }
 
         // Update is called once per frame
@@ -79,12 +98,12 @@ namespace App
                     case "0":
                         {
                             DataHelper.saveProfile(response);
-                            //todo jump to game index page
+                            SceneManager.LoadScene("home");
                             break;
                         }
                     default:
                         {
-                            showMessage(response.Msg);
+                            showMessage(response.Code);
                             break;
                         }
                 }
