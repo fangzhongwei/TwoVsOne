@@ -62,12 +62,13 @@ namespace App.Helper
 
         public static string getDescByCode(string code, string lan)
         {
-            List<ResourceRaw> raws = dbManager.Query<ResourceRaw>(string.Format("SELECT Desc FROM ResourceRow WHERE Code = {0} AND Lan = {1}", code, lan));
-            if (raws == null || raws.Count == 0)
+            SimpleDataTable dt = dbManager.QueryGeneric(string.Format("SELECT Desc FROM ResourceRow WHERE Code = {0} AND Lan = {1}", code, lan));
+            List<SimpleDataRow> simpleDataRows = dt.rows;
+            if (dt == null || simpleDataRows == null || simpleDataRows.Count == 0)
             {
                 return "-";
             }
-            return raws[0].Desc;
+            return simpleDataRows[0]["Desc"].ToString();
         }
 
         public static void saveResource(ResourceResp response)
