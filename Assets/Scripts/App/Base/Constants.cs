@@ -8,6 +8,8 @@
 
         public static int API_ID_SEND_CODE = 1001;
         public static int API_ID_LOGIN = 1002;
+        public static int API_LOAD_ALL_RESOURCES = 1006;
+        public static int API_PULL_RESOURCES = 1007;
         public static int CLIENT_ID = 1;
     }
 }

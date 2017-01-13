@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using App.Helper;
 using ConsoleApplication.Helper;
 using UnityEngine;
 
@@ -21,9 +22,9 @@ namespace App.Base
             labelMessage.text = "";
         }
 
-        protected void showMessage(string message)
+        protected void showMessage(string code)
         {
-            labelMessage.text = message;
+            labelMessage.text = DataHelper.getDescByCode(code, AppContext.GetInstance().GetLan());
         }
 
         public void HttpPost(string url, string traceId, string token, int actionId, byte[] data)

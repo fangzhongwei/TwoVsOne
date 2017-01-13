@@ -10,22 +10,31 @@ using App.Base;
 public class Index : HttpMonoBehaviour
 {
 	// Use this for initialization
-	void Start () {
+	void Start ()
+	{
+	    FindBaseUis();
+	    ConfigRaw loadConfig = DataHelper.loadConfig();
 
+	    if (loadConfig.ResourceVersion == 0)
+	    {
+	        SimpleReq req = new SimpleReq
+	        {
+	            Param0 = loadConfig.Lan
+	        };
+	        HttpPost(Constants.COMMON_DISPATCH_URL, GUIDHelper.generate(), Constants.DEFAULT_TOKEN,
+	            Constants.API_LOAD_ALL_RESOURCES, req.ToByteArray());
+	    }
+	    else
+	    {
+	        PullResourceReq req = new PullResourceReq
+	        {
+	            Version = Constants.CLIENT_ID,
+	            Lan = loadConfig.Lan
+	        };
 
-
-        LoginReq req = new LoginReq
-        {
-            ClientId = Constants.CLIENT_ID,
-            DeviceType = DeviceHelper.getDeviceType(),
-            FingerPrint = SystemInfo.deviceUniqueIdentifier,
-            Mobile = mobile,
-            VerificationCode = code
-        };
-
-        HttpPost(Constants.COMMON_DISPATCH_URL, GUIDHelper.generate(), Constants.DEFAULT_TOKEN,
-            Constants.API_ID_LOGIN, req.ToByteArray());
-
+	        HttpPost(Constants.COMMON_DISPATCH_URL, GUIDHelper.generate(), Constants.DEFAULT_TOKEN,
+	            Constants.API_PULL_RESOURCES, req.ToByteArray());
+	    }
     }
 	
 	// Update is called once per frame
@@ -34,8 +43,35 @@ public class Index : HttpMonoBehaviour
 	}
 
     public override void Callback(byte[] data) {
+        ResourceResp response = null;
+        try
+        {
+            response = ResourceResp.Parser.ParseFrom(data);
+        }
+        catch (Exception)
+        {
+            showMessage("解析数据异常。");
+        }
 
+        if (response != null)
+        {
+            switch (response.Code)
+            {
+                case "0":
+                {
+                    DataHelper.saveResource(response);
+                    SceneManager.LoadScene("home");
+                    break;
+                }
+                default:
+                {
+                    showMessage(response.Code);
+                    break;
+                }
+            }
+        }
     }
+
     public override void HttpErrorCallback() {
 
     }

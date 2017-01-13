@@ -7,6 +7,7 @@ namespace App.Base
         private static AppContext instance = new AppContext();
         private static string Token;
         private static string Key;
+        private static string Lan;
         private AppContext()
         {
         }
@@ -25,14 +26,24 @@ namespace App.Base
             return Key;
         }
 
-        public string getToken()
+        public string GetToken()
         {
             return Token;
         }
 
-        public void setToken(string token)
+        public void SetToken(string token)
         {
             Token = token;
+        }
+
+        public string GetLan()
+        {
+            return Lan;
+        }
+
+        public void SetLan(string lan)
+        {
+            Lan = lan;
         }
     }
 }
