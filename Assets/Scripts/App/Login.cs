@@ -52,16 +52,30 @@ namespace App
             string mobile = inputMobile.value;
             string code = inputCode.value;
 
+            if (mobile == null || "".Equals(mobile))
+            {
+                showMessage(Constants.EC_UC_NO_MOBILE);
+                buttonLogin.enabled = true;
+                return;
+            }
+
             if (!RegexHelper.isMobile(mobile))
             {
-                showMessage("请输入正确的手机号。");
+                showMessage(Constants.EC_UC_INVALID_MOBILE);
+                buttonLogin.enabled = true;
+                return;
+            }
+
+            if (code == null || "".Equals(code))
+            {
+                showMessage(Constants.EC_UC_NO_CODE);
                 buttonLogin.enabled = true;
                 return;
             }
 
             if (!RegexHelper.isValidCode(code))
             {
-                showMessage("请输入正确的验证码。");
+                showMessage(Constants.EC_UC_INVALID_CODE);
                 buttonLogin.enabled = true;
                 return;
             }
@@ -88,7 +102,7 @@ namespace App
             }
             catch (Exception)
             {
-                showMessage("解析数据异常。");
+                showMessage(Constants.EC_PARSE_DATA_ERROR);
             }
 
             if (response != null)

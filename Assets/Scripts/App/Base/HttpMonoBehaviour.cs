@@ -44,7 +44,7 @@ namespace App.Base
             if (www.error != null)
             {
                 Debug.Log("error is :" + www.error);
-                showMessage("暂时无法连接服务器，请检查网络。");
+                showMessage(Constants.EC_NETWORK_UNREACHED);
                 HttpErrorCallback();
             }
             else
@@ -56,7 +56,7 @@ namespace App.Base
 
                 if (httpResponseCode != 200)
                 {
-                    showMessage("服务器暂时无法处理您的请求，请稍后再试。");
+                    showMessage(Constants.EC_SERVER_ERROR);
                 }
                 else
                 {
@@ -72,7 +72,7 @@ namespace App.Base
                         }
                         catch (Exception)
                         {
-                            showMessage("解析数据异常。");
+                            showMessage(Constants.EC_PARSE_DATA_ERROR);
                         }
                         if (response != null)
                         {

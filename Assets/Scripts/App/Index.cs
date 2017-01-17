@@ -50,7 +50,7 @@ public class Index : HttpMonoBehaviour
         }
         catch (Exception)
         {
-            showMessage("解析数据异常。");
+            showMessage(Constants.EC_PARSE_DATA_ERROR);
         }
 
         if (response != null)

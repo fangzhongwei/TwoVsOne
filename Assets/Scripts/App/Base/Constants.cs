@@ -11,5 +11,17 @@
         public static int API_LOAD_ALL_RESOURCES = 1006;
         public static int API_PULL_RESOURCES = 1007;
         public static int CLIENT_ID = 1;
+
+        public static string EC_UC_NO_MOBILE = "EC_UC_NO_MOBILE";
+        public static string EC_UC_NO_CODE = "EC_UC_NO_CODE";
+        public static string EC_UC_NO_NICKNAME = "EC_UC_NO_NICKNAME";
+        public static string EC_UC_INVALID_MOBILE = "EC_UC_INVALID_MOBILE";
+        public static string EC_UC_INVALID_CODE = "EC_UC_INVALID_CODE";
+        public static string EC_NETWORK_UNREACHED = "EC_NETWORK_UNREACHED";
+        public static string EC_SERVER_ERROR = "EC_SERVER_ERROR";
+        public static string EC_PARSE_DATA_ERROR = "EC_PARSE_DATA_ERROR";
+
+        public static string MSG_CODE_SENDED = "MSG_CODE_SENDED";
+
     }
 }

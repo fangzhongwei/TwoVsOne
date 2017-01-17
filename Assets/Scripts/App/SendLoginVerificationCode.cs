@@ -39,9 +39,15 @@ namespace App
 
             string mobile = inputMobile.value;
 
+            if (mobile == null || "".Equals(mobile))
+            {
+                showMessage(Constants.EC_UC_NO_MOBILE);
+                return;
+            }
+
             if (!RegexHelper.isMobile(mobile))
             {
-                showMessage("请输入正确的手机号。");
+                showMessage(Constants.EC_UC_INVALID_MOBILE);
                 return;
             }
 
@@ -66,7 +72,7 @@ namespace App
             }
             catch (Exception)
             {
-                showMessage("解析数据异常。");
+                showMessage(Constants.EC_PARSE_DATA_ERROR);
             }
 
             if (response != null)
@@ -75,7 +81,7 @@ namespace App
                 {
                     case "0":
                         {
-                            showMessage("验证码已发送到您的手机，请查收。");
+                            showMessage(Constants.MSG_CODE_SENDED);
                             resend = true;
                             lastChannel = response.Channel;
                             StartCoroutine(Timer());
