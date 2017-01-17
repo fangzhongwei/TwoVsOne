@@ -41,8 +41,13 @@ namespace App.Base
 
         public void HttpPost(string url, string traceId, string token, int actionId, byte[] data)
         {
+            byte[] encodeBytes = new byte[0];
+            if (data != null && data.Length > 0)
+            {
+                encodeBytes = DESHelper.EncodeBytes(GZipHelper.compress(data), AppContext.GetInstance().getDesKey());
+            }
             StartCoroutine(Post(url, traceId, token, actionId,
-                DESHelper.EncodeBytes(GZipHelper.compress(data), AppContext.GetInstance().getDesKey())));
+                encodeBytes));
         }
 
         IEnumerator Post(string url, string traceId, string token, int actionId, byte[] data)
