@@ -47,35 +47,35 @@ namespace App
 
         public void OnbtlClick()
         {
-            cleanMessage();
+            CleanMessage();
             buttonLogin.enabled = false;
             string mobile = inputMobile.value;
             string code = inputCode.value;
 
             if (mobile == null || "".Equals(mobile))
             {
-                showMessage(Constants.EC_UC_NO_MOBILE);
+                ShowMessage(Constants.EC_UC_NO_MOBILE);
                 buttonLogin.enabled = true;
                 return;
             }
 
             if (!RegexHelper.isMobile(mobile))
             {
-                showMessage(Constants.EC_UC_INVALID_MOBILE);
+                ShowMessage(Constants.EC_UC_INVALID_MOBILE);
                 buttonLogin.enabled = true;
                 return;
             }
 
             if (code == null || "".Equals(code))
             {
-                showMessage(Constants.EC_UC_NO_CODE);
+                ShowMessage(Constants.EC_UC_NO_CODE);
                 buttonLogin.enabled = true;
                 return;
             }
 
             if (!RegexHelper.isValidCode(code))
             {
-                showMessage(Constants.EC_UC_INVALID_CODE);
+                ShowMessage(Constants.EC_UC_INVALID_CODE);
                 buttonLogin.enabled = true;
                 return;
             }
@@ -86,7 +86,8 @@ namespace App
                 DeviceType = DeviceHelper.getDeviceType(),
                 FingerPrint = SystemInfo.deviceUniqueIdentifier,
                 Mobile = mobile,
-                VerificationCode = code
+                VerificationCode = code,
+                Version = Constants.VERSION
             };
 
             HttpPost(Constants.COMMON_DISPATCH_URL, GUIDHelper.generate(), Constants.DEFAULT_TOKEN,
@@ -102,7 +103,7 @@ namespace App
             }
             catch (Exception)
             {
-                showMessage(Constants.EC_PARSE_DATA_ERROR);
+                ShowMessage(Constants.EC_PARSE_DATA_ERROR);
             }
 
             if (response != null)
@@ -111,19 +112,18 @@ namespace App
                 {
                     case "0":
                         {
-                            DataHelper.saveProfile(response);
+                            DataHelper.SaveProfile(response);
                             SceneManager.LoadScene("home");
                             break;
                         }
                     default:
                         {
-                            showMessage(response.Code);
+                            ShowMessage(response.Code);
                             break;
                         }
                 }
             }
         }
-
 
         public override void HttpErrorCallback()
         {

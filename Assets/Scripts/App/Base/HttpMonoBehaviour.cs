@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using App.Helper;
 using ConsoleApplication.Helper;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace App.Base
 {
@@ -17,14 +18,25 @@ namespace App.Base
             labelMessage = GameObject.FindWithTag("message").GetComponent<UILabel>();
         }
 
-        protected void cleanMessage()
+        protected void CleanMessage()
         {
             labelMessage.text = "";
         }
 
-        protected void showMessage(string code)
+        protected void ShowMessage(string code)
         {
-            labelMessage.text = DataHelper.getDescByCode(code, AppContext.GetInstance().GetLan());
+            if (code.Equals(Constants.EC_SSO_SESSION_EXPIRED))
+            {
+                DataHelper.CleanProfile();
+                SceneManager.LoadScene("login");
+                return;
+            }
+            if (code.Equals(Constants.EC_SSO_SESSION_REPELLED))
+            {
+                //SceneManager.LoadScene("login");
+                return;
+            }
+            labelMessage.text = DataHelper.GetDescByCode(code, AppContext.GetInstance().GetLan());
         }
 
         public void HttpPost(string url, string traceId, string token, int actionId, byte[] data)
@@ -44,7 +56,7 @@ namespace App.Base
             if (www.error != null)
             {
                 Debug.Log("error is :" + www.error);
-                showMessage(Constants.EC_NETWORK_UNREACHED);
+                ShowMessage(Constants.EC_NETWORK_UNREACHED);
                 HttpErrorCallback();
             }
             else
@@ -56,7 +68,7 @@ namespace App.Base
 
                 if (httpResponseCode != 200)
                 {
-                    showMessage(Constants.EC_SERVER_ERROR);
+                    ShowMessage(Constants.EC_SERVER_ERROR);
                 }
                 else
                 {
@@ -72,11 +84,11 @@ namespace App.Base
                         }
                         catch (Exception)
                         {
-                            showMessage(Constants.EC_PARSE_DATA_ERROR);
+                            ShowMessage(Constants.EC_PARSE_DATA_ERROR);
                         }
                         if (response != null)
                         {
-                            showMessage(response.Code);
+                            ShowMessage(response.Code);
                         }
                     }
                     else

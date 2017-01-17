@@ -11,7 +11,7 @@ namespace App.Helper
         
         private static SimpleSQLManager dbManager;
 
-        private static void init()
+        private static void Init()
         {
             if (dbManager == null)
             {
@@ -19,15 +19,15 @@ namespace App.Helper
             }
         }
 
-        public static ConfigRaw loadConfig()
+        public static ConfigRaw LoadConfig()
         {
-            init();
+            Init();
             ConfigRaw configRaw;
             List<ConfigRaw> configRaws = dbManager.Query<ConfigRaw>("SELECT * FROM ConfigRaw WHERE Id = 1");
 
             if (configRaws == null || configRaws.Count == 0)
             {
-                configRaw = saveDefaultConfig();
+                configRaw = SaveDefaultConfig();
             }
             else
             {
@@ -36,7 +36,7 @@ namespace App.Helper
             return configRaw;
         }
 
-        public static ConfigRaw saveDefaultConfig()
+        public static ConfigRaw SaveDefaultConfig()
         {
             ConfigRaw configRaw = new ConfigRaw();
             configRaw.Id = 1;
@@ -49,8 +49,10 @@ namespace App.Helper
             return configRaw;
         }
 
-        public static void saveProfile(LoginResp response)
+        public static void SaveProfile(LoginResp response)
         {
+            dbManager.BeginTransaction();
+            dbManager.Execute("DELETE FROM SessionRow WHERE Id = 1");
             SessionRow row = new SessionRow();
             row.Id = 1;
             row.Token = response.Token;
@@ -58,9 +60,10 @@ namespace App.Helper
             row.Status = response.Status;
             row.NickName = response.NickName;
             dbManager.Insert(row);
+            dbManager.Commit();
         }
 
-        public static string getDescByCode(string code, string lan)
+        public static string GetDescByCode(string code, string lan)
         {
             SimpleDataTable dt = dbManager.QueryGeneric(string.Format("SELECT Desc FROM ResourceRow WHERE Code = {0} AND Lan = {1}", code, lan));
             List<SimpleDataRow> simpleDataRows = dt.rows;
@@ -73,7 +76,7 @@ namespace App.Helper
 
         public static void saveResource(ResourceResp response)
         {
-            ConfigRaw configRaw = loadConfig();
+            ConfigRaw configRaw = LoadConfig();
             if (response.LatestVersion > configRaw.ResourceVersion)
             {
                 dbManager.BeginTransaction();
@@ -96,6 +99,23 @@ namespace App.Helper
 
                 dbManager.Commit();
             }
+        }
+
+        public static string LoadToken()
+        {
+            SimpleDataTable dt = dbManager.QueryGeneric("SELECT Token FROM SessionRow WHERE Id = 1");
+            List<SimpleDataRow> simpleDataRows = dt.rows;
+            if (dt == null || simpleDataRows == null || simpleDataRows.Count == 0)
+            {
+                return "-";
+            }
+            return simpleDataRows[0]["Token"].ToString();
+
+        }
+
+        public static void CleanProfile()
+        {
+            dbManager.Execute("DELETE FROM SessionRow WHERE Id = 1");
         }
     }
 }

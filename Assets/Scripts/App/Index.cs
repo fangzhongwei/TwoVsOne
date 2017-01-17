@@ -13,7 +13,7 @@ public class Index : HttpMonoBehaviour
 	void Start ()
 	{
 	    FindBaseUis();
-	    ConfigRaw loadConfig = DataHelper.loadConfig();
+	    ConfigRaw loadConfig = DataHelper.LoadConfig();
 
 	    if (loadConfig.ResourceVersion == 0)
 	    {
@@ -50,7 +50,7 @@ public class Index : HttpMonoBehaviour
         }
         catch (Exception)
         {
-            showMessage(Constants.EC_PARSE_DATA_ERROR);
+            ShowMessage(Constants.EC_PARSE_DATA_ERROR);
         }
 
         if (response != null)
@@ -65,7 +65,7 @@ public class Index : HttpMonoBehaviour
                 }
                 default:
                 {
-                    showMessage(response.Code);
+                    ShowMessage(response.Code);
                     break;
                 }
             }

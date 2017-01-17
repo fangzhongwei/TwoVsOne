@@ -34,20 +34,20 @@ namespace App
 
         public void OnbtlClick()
         {
-            cleanMessage();
+            CleanMessage();
             buttonSend.enabled = false;
 
             string mobile = inputMobile.value;
 
             if (mobile == null || "".Equals(mobile))
             {
-                showMessage(Constants.EC_UC_NO_MOBILE);
+                ShowMessage(Constants.EC_UC_NO_MOBILE);
                 return;
             }
 
             if (!RegexHelper.isMobile(mobile))
             {
-                showMessage(Constants.EC_UC_INVALID_MOBILE);
+                ShowMessage(Constants.EC_UC_INVALID_MOBILE);
                 return;
             }
 
@@ -72,7 +72,7 @@ namespace App
             }
             catch (Exception)
             {
-                showMessage(Constants.EC_PARSE_DATA_ERROR);
+                ShowMessage(Constants.EC_PARSE_DATA_ERROR);
             }
 
             if (response != null)
@@ -81,7 +81,7 @@ namespace App
                 {
                     case "0":
                         {
-                            showMessage(Constants.MSG_CODE_SENDED);
+                            ShowMessage(Constants.MSG_CODE_SENDED);
                             resend = true;
                             lastChannel = response.Channel;
                             StartCoroutine(Timer());
@@ -89,7 +89,7 @@ namespace App
                         }
                     default:
                         {
-                            showMessage(response.Code);
+                            ShowMessage(response.Code);
                             buttonSend.enabled = true;
                             break;
                         }
@@ -108,7 +108,7 @@ namespace App
                 {
                     labelSend.text = "获取验证码";
                     buttonSend.enabled = true;
-                    cleanMessage();
+                    CleanMessage();
                     break;
                 }
                 labelSend.text = string.Format("重新发送(${0}秒)", remainingSeconds);
