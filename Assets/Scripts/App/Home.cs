@@ -46,7 +46,6 @@ public class Home : HttpMonoBehaviour
 		
 	}
 
-
     public  override void Callback(byte[] data)
     {
         switch (dataType)
