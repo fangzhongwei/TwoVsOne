@@ -31,6 +31,7 @@
         public static string EC_UC_NICKNAME_TOO_LONG = "EC_UC_NICKNAME_TOO_LONG";
 
         public static string EC_NETWORK_UNREACHED = "EC_NETWORK_UNREACHED";
+        public static string EC_NETWORK_TIMEOUT = "EC_NETWORK_TIMEOUT";
         public static string EC_SERVER_ERROR = "EC_SERVER_ERROR";
         public static string EC_PARSE_DATA_ERROR = "EC_PARSE_DATA_ERROR";
 

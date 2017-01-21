@@ -2,10 +2,7 @@
 using App.Base;
 using App.Helper;
 using Google.Protobuf;
-using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine;
-using App.Base;
 
 public class Index : HttpMonoBehaviour
 {
