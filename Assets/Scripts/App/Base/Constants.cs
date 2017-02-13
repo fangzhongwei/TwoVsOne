@@ -40,5 +40,9 @@
         public static string EC_SSO_SESSION_EXPIRED = "EC_SSO_SESSION_EXPIRED";
         public static string EC_SSO_SESSION_REPELLED = "EC_SSO_SESSION_REPELLED";
 
+        public static string EC_GAME_INVALID_DATA = "EC_GAME_INVALID_DATA";
+
+        public static char[] CARDS_SEPERATOR = new char[1]{','};
+
     }
 }

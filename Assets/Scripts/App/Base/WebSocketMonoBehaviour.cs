@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Threading;
+using App.Helper;
 using BestHTTP.WebSocket;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace App.Base
 {
@@ -14,6 +16,22 @@ namespace App.Base
         protected void FindBaseUis()
         {
             labelMessage = GameObject.FindWithTag("message").GetComponent<UILabel>();
+        }
+
+        protected void ShowMessage(string code)
+        {
+            if (code.Equals(Constants.EC_SSO_SESSION_EXPIRED))
+            {
+                DataHelper.CleanProfile();
+                SceneManager.LoadScene("login");
+                return;
+            }
+            if (code.Equals(Constants.EC_SSO_SESSION_REPELLED))
+            {
+                //SceneManager.LoadScene("login");
+                return;
+            }
+            labelMessage.text = DataHelper.GetDescByCode(code, AppContext.GetInstance().GetLan());
         }
 
         protected void StartWebSocket(string uri)
@@ -63,10 +81,36 @@ namespace App.Base
             labelMessage.text = message;
         }
 
-        private void OnBinaryMessageReceived(WebSocket webSocket, byte[] message)
+        private void OnBinaryMessageReceived(WebSocket webSocket, byte[] buffer)
         {
-            Debug.Log("Binary Message received from server. Length: " + message.Length);
+            Debug.Log("Binary Message received from server. Length: " + buffer.Length);
+            labelMessage.text = "Length:" + buffer.Length;
+            SocketResponse socketResponse;
+            try
+            {
+                socketResponse = SocketResponse.Parser.ParseFrom(buffer);
+            }
+            catch (Exception)
+            {
+                ShowMessage(Constants.EC_PARSE_DATA_ERROR);
+                return;
+            }
+
+            if (socketResponse != null)
+            {
+                String code = socketResponse.P1;
+                if (!"0".Equals(code))
+                {
+                    ShowMessage(code);
+                }
+                else
+                {
+                    HandleSocketResponse(socketResponse);
+                }
+            }
         }
+
+        abstract public void HandleSocketResponse(SocketResponse socketResponse);
 
         private void OnWebSocketClosed(WebSocket webSocket, UInt16 code, string message)
         {
