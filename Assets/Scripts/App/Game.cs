@@ -1,4 +1,5 @@
-﻿using App.Base;
+﻿using System.Collections.Generic;
+using App.Base;
 using App.Helper;
 using App.VO;
 using UnityEngine;
@@ -10,14 +11,22 @@ public class Game : WebSocketMonoBehaviour {
     // Use this for initialization
 	void Start ()
 	{
-	    //Input.multiTouchEnabled=true;
 	    FindBaseUis();
 
 	    SeatWatch watch = new SeatWatch();
-	    RenderWatch(watch);
+	    //RenderWatch(watch);
 	    //StartWebSocket("ws://127.0.0.1:9000/greeter");
+
+
+	    //GameObject cube = generatePingPong(Vector2.zero);
+	    //cubes.Add(cube);
+
+	    RenderWatch(null);
+
 	}
-	
+
+    private List<GameObject> cubes = new List<GameObject>();
+
 	// Update is called once per frame
 	void Update () {
 	    // timer -= Time.deltaTime;
@@ -27,56 +36,23 @@ public class Game : WebSocketMonoBehaviour {
 	        // timer = 1.0f;
 	    // }
 
-
-
-	    if (Input.GetMouseButtonDown(0)){ // if left button pressed...
-	        labelMessage.text = "GetMouseButtonDown";
-	        Ray ray =Camera.main.ScreenPointToRay(Input.mousePosition);
-	        RaycastHit hit;
-	        if (Physics.Raycast(ray, out hit)){
-	            labelMessage.text = "hit:" + hit;
-	        }
-	        else
+	    foreach (GameObject c in cubes.ToArray())
+	    {
+	        if (c != null)
 	        {
-	            labelMessage.text = "Not hit.";
+	            Vector3 translation = Vector3.forward * 1;
+	            Vector3 transformDirection = Camera.main.transform.TransformDirection(translation);
+	            c.transform.position += (transformDirection);
 	        }
 	    }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	}
+
+    public void DoSomething()
+    {
+        Debug.Log("you found me.");
+    }
 
     public override void HandleSocketResponse(SocketResponse socketResponse)
     {
@@ -117,7 +93,6 @@ public class Game : WebSocketMonoBehaviour {
         {
             RenderWatch(watch);
         }
-
     }
 
     private bool ValidateSeatWatch(SeatWatch watch)
@@ -151,21 +126,12 @@ public class Game : WebSocketMonoBehaviour {
         return watch;
     }
 
-    private GameObject cardObj;
     private void RenderWatch(SeatWatch watch)
     {
-        //string[] cardArray = watch.cards.Split(Constants.CARDS_SEPERATOR);
+        var heartA = GameObject.FindGameObjectWithTag("Heart_A");
+        var redJoker = GameObject.FindGameObjectWithTag("RedJoker");
 
-        //AssetDatabase.LoadAssetAtPath("")
-        //Object cardObj = AssetDatabase.LoadAssetAtPath("Assets/Cards/Prefabs/CardPlane/Clubs/cA.prefab", typeof(GameObject));
-        GameObject obj = Resources.Load<GameObject>("Cards/Prefabs/CardPlane/Clubs/cA");
-        Debug.Log("cardObj is :" + obj + ":");
-        cardObj = Instantiate(obj);
-
-        cardObj.transform.position = Vector3.zero;
-        cardObj.transform.localScale = Vector3.one * 10;
-        cardObj.transform.Rotate(new Vector3(-90, 0, 0));
-
-        cardObj.transform.parent = transform;
+        heartA.transform.position += new Vector3(-4999, 0, 0);
+        redJoker.transform.position += new Vector3(-5000, 0, 0);
     }
 }

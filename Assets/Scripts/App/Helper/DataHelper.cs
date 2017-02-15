@@ -3,6 +3,7 @@ using App.Base;
 using Google.Protobuf.Collections;
 using SimpleSQL;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace App.Helper
 {
@@ -116,6 +117,7 @@ namespace App.Helper
         public static void CleanProfile()
         {
             dbManager.Execute("DELETE FROM SessionRow WHERE Id = 1");
+            SceneManager.LoadScene("login");
         }
     }
 }

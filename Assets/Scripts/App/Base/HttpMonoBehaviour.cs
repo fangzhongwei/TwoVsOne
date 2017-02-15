@@ -27,7 +27,6 @@ namespace App.Base
             if (code.Equals(Constants.EC_SSO_SESSION_EXPIRED))
             {
                 DataHelper.CleanProfile();
-                SceneManager.LoadScene("login");
                 return;
             }
             if (code.Equals(Constants.EC_SSO_SESSION_REPELLED))
