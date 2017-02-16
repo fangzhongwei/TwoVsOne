@@ -1,19 +1,15 @@
 ﻿using App.Base;
-using Boo.Lang;
-using HedgehogTeam.EasyTouch;
 using UnityEngine;
 
 public class TouchManager : MonoBehaviour {
-    protected UILabel labelMessage;
 
     // Use this for initialization
     void Start () {
-        labelMessage = GameObject.FindWithTag("message").GetComponent<UILabel>();
     }
 
     // Update is called once per frame
 	void Update () {
-	    labelMessage.text = "touch count:" + Input.touchCount;
+
 	    if (Input.touchCount > 0)
 	    {
 	        if (Input.touches[0].phase == TouchPhase.Began)

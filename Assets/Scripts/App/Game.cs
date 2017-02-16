@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using App.Base;
 using App.Helper;
 using App.VO;
@@ -16,6 +17,9 @@ public class Game : WebSocketMonoBehaviour {
 
 	    SeatWatch watch = new SeatWatch();
 	    watch.cards = "411,311,211,412,312,212,112,413,313,213,113,414,314,214,114,415,315,215,115,516,517";
+	    //watch.cards = "411,311,211,412,312,212,112,413,313,213,113";
+	    //.cards = "411,311,211,412,312";
+	    //watch.cards = "516,517";
 	    RenderWatch(watch);
 	    //StartWebSocket("ws://127.0.0.1:9000/greeter");
 	}
@@ -128,7 +132,13 @@ public class Game : WebSocketMonoBehaviour {
         for (int i = 0; i < length; i++)
         {
             cardObj = GameObject.FindGameObjectWithTag(CardHelper.GetInstance().GetTag(int.Parse(cardIdArray[i])));
-            cardObj.transform.position = new Vector3((i - mid) * 0.5f, 0, 0.0001f * (length - i - 1));
+
+            Decimal z = new Decimal(0.0001f) * new Decimal( -i);
+            cardObj.transform.position = new Vector3((i - mid) * 1.0f, 0, (float)z);
+            cardObj.GetComponent<BoxCollider>().size = new Vector3(1.95f, 2.9f, 0.01f);
+            cardObj.transform.localScale = new Vector3(2, 2, 2);
+            cardObj.transform.Rotate(new Vector3(180, 0, 0));
+            print(cardObj.tag + ",z:" + cardObj.transform.position.z);
             cardObj.AddComponent<TouchAction>();
         }
     }
