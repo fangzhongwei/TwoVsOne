@@ -128,6 +128,7 @@ public class Game : WebSocketMonoBehaviour {
 
     private void RenderWatch(SeatWatch watch)
     {
+        //print("" + watch);
         var heartA = GameObject.FindGameObjectWithTag("Heart_A");
         var redJoker = GameObject.FindGameObjectWithTag("RedJoker");
 

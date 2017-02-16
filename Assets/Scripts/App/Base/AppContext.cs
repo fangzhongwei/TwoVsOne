@@ -4,7 +4,7 @@ namespace App.Base
 {
     public class AppContext
     {
-        private static AppContext instance = new AppContext();
+        private static readonly AppContext instance = new AppContext();
         private static string Token;
         private static string Key;
         private static string Lan;
