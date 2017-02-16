@@ -2,6 +2,7 @@
 using App.Base;
 using App.Helper;
 using App.VO;
+using Assets.Scripts.App.Helper;
 using UnityEngine;
 
 public class Game : WebSocketMonoBehaviour {
@@ -14,15 +15,9 @@ public class Game : WebSocketMonoBehaviour {
 	    FindBaseUis();
 
 	    SeatWatch watch = new SeatWatch();
-	    //RenderWatch(watch);
+	    watch.cards = "517,516,415,315,215,115,414,314,214,114,413,313,213,113,412,312,212,112,411,311,211";
+	    RenderWatch(watch);
 	    //StartWebSocket("ws://127.0.0.1:9000/greeter");
-
-
-	    //GameObject cube = generatePingPong(Vector2.zero);
-	    //cubes.Add(cube);
-
-	    RenderWatch(null);
-
 	}
 
     private List<GameObject> cubes = new List<GameObject>();
@@ -128,11 +123,14 @@ public class Game : WebSocketMonoBehaviour {
 
     private void RenderWatch(SeatWatch watch)
     {
-        //print("" + watch);
-        var heartA = GameObject.FindGameObjectWithTag("Heart_A");
-        var redJoker = GameObject.FindGameObjectWithTag("RedJoker");
-
-        heartA.transform.position += new Vector3(-4999, 0, 0);
-        redJoker.transform.position += new Vector3(-5000, 0, 0);
+        var cardIdArray = watch.cards.Split(Constants.CARDS_SEPERATOR);
+        var length = cardIdArray.Length;
+        float mid = (float)length / 2;
+        GameObject cardObj;
+        for (int i = 0; i < length; i++)
+        {
+            cardObj = GameObject.FindGameObjectWithTag(CardHelper.GetInstance().GetTag(int.Parse(cardIdArray[i])));
+            cardObj.transform.position = new Vector3((i - mid) * 0.5f, 0, 0);
+        }
     }
 }

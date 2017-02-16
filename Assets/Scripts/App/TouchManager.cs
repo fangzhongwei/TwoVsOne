@@ -13,7 +13,6 @@ public class TouchManager : MonoBehaviour {
 
     // Update is called once per frame
 	void Update () {
-	    Debug.Log("working..." + Input.touchCount);
 	    labelMessage.text = "touch count:" + Input.touchCount;
 	    if (Input.touchCount > 0)
 	    {
@@ -29,8 +28,8 @@ public class TouchManager : MonoBehaviour {
 	            foreach (GameObject gameObject in  TouchContext.GetInstance().TouchedList())
 	            {
 
-	                Debug.Log("touched objet : " + gameObject.tag + ", ready:" + gameObject.GetComponent<CardAttr>().ready);
-	                if (gameObject.GetComponent<CardAttr>().ready)
+	                Debug.Log("touched objet : " + gameObject.tag + ", ready:" + gameObject.GetComponent<TouchAction>().ready2go);
+	                if (gameObject.GetComponent<TouchAction>().ready2go)
 	                {
 	                    gameObject.transform.position += Vector3.down;
 	                }
@@ -38,7 +37,8 @@ public class TouchManager : MonoBehaviour {
 	                {
 	                    gameObject.transform.position += Vector3.up;
 	                }
-	                gameObject.GetComponent<CardAttr>().ready = !gameObject.GetComponent<CardAttr>().ready;
+	                gameObject.GetComponent<TouchAction>().ready2go = !gameObject.GetComponent<TouchAction>().ready2go;
+	                gameObject.transform.Find("Front").gameObject.GetComponent<SpriteRenderer>().color = Color.white;
 	            }
 
 	            TouchContext.GetInstance().touching = false;

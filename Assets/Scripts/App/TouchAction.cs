@@ -1,10 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using App.Base;
+﻿using App.Base;
 using UnityEngine;
 
 public class TouchAction : MonoBehaviour {
 
+    public bool ready2go { get; set; }
 
     // Update is called once per frame
     void Update () {
@@ -16,13 +15,19 @@ public class TouchAction : MonoBehaviour {
 
     private void OnMouseEnter()
     {
-        Debug.Log("OnMouseEnter:" + tag);
         TouchContext.GetInstance().Add(gameObject);
+
+        //gameObject.GetComponent<Light>().enabled = true;
+        //GetComponent<Renderer>().material.color = Color.red;
+        //shader
+        Debug.Log("OnMouseEnter:" + tag);
+        //GameObject.FindGameObjectWithTag(tag + "Face").GetComponent<SpriteRenderer>().color = Color.red;
+        transform.Find("Front").gameObject.GetComponent<SpriteRenderer>().color = Color.red;
     }
 
     private void OnMouseOver()
     {
-        Debug.Log("OnMouseOver:" + tag);
+        Debug.Log("OnMouseOver22:" + tag);
     }
 
     private void OnMouseDrag()
